@@ -51,6 +51,7 @@ const AddNewTaxForm = (props) => {
                                     <Col lg={7}>
                                         <input
                                             type="text"
+                                            required
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
                                             value={props.values.name}
@@ -61,6 +62,7 @@ const AddNewTaxForm = (props) => {
                                     <Col lg={4}>
                                         <input
                                             type="number"
+                                            required
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
                                             value={props.values.rate}
@@ -124,7 +126,14 @@ const AddNewTaxForm = (props) => {
                                                     onChange={e => {
                                                         props.setFieldValue(`${key}_${index}`, !props.values[`${key}_${index}`])
                                                         props.setFieldValue('applied_to', 'some')
-                                                        e.target.checked ? props.setFieldValue('applicable_items', groupedItems[key].map(item => item.id)) : props.setFieldValue('applicable_items', [])
+                                                        if(e.target.checked) {
+                                                            props.setFieldValue('applicable_items', [...props.values.applicable_items, ...groupedItems[key].map(item => item.id)])
+                                                        }else{
+                                                            const newArr = [...props.values.applicable_items]
+                                                            let d = newArr.filter(el => !groupedItems[key].map(item => item.id === el))
+                                                            console.log('New Array', d)
+                                                            props.setFieldValue('applicable_items', d)
+                                                        }
                                                         console.log(props.values)
                                                     }}/>
                                                 &nbsp; <span>{key}</span>
@@ -186,7 +195,7 @@ const AddNewTaxForm = (props) => {
 
 AddNewTaxForm.propTypes = {
     isOpen: PropTypes.bool.isRequired,
-    isEdit: PropTypes.bool.isRequired,
+    isEdit: PropTypes.bool,
     taxToEdit: PropTypes.any,
     handleOnClose: PropTypes.func.isRequired,
     onAddNewTax: PropTypes.func,
