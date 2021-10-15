@@ -22,7 +22,7 @@ const taxes = (state = INIT_STATE, action) => {
             return {
                 ...state,
                 loading: false,
-                tax: action.payload,
+                taxes: state.taxes.map(tax => tax.name === action.payload.name ? { tax, ...action.payload } : tax),
             };
 
         case ADD_TAX_FAIL:

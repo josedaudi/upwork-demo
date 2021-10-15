@@ -25,7 +25,7 @@ function* putNewTax({payload}) {
 function* patchExistingTax({payload}) {
     try {
         const response = yield call(editExistingTaxOperation, payload);
-        yield put(editTaxActionSuccessful(response.data.results));
+        yield put(editTaxActionSuccessful(response));
     } catch (error) {
         yield put(editTaxActionFail(error));
     }
