@@ -22,7 +22,7 @@ const AddNewTaxForm = (props) => {
             toggle={handleOnClose}>
             <div className="modal-content">
                 <ModalHeader toggle={handleOnClose} style={{paddingLeft: '3rem', paddingRight: '3rem'}}>
-                    {isEdit ? `Edit` : 'Add'} Tax - {taxToEdit && taxToEdit.name}
+                    {isEdit ? `Edit - ` : 'Add'} Tax {taxToEdit && taxToEdit.name}
                 </ModalHeader>
                 <ModalBody style={{padding: 20}}>
                     <Formik
