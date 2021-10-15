@@ -12,15 +12,6 @@ const AddNewTaxForm = (props) => {
     const {isOpen, handleOnClose, isEdit, taxToEdit, taxIndex, onAddNewTax, onEditTax} = props
     const groupedItems = _.groupBy(items, 'category.name')
     const itemsKeys = Object.keys(groupedItems)
-    const [appliedTo, setAppliedTo] = useState(null)
-    const [rate, setRate] = useState(0)
-
-    useEffect(() => {
-        if (isEdit && taxToEdit) {
-            setAppliedTo(taxToEdit.applied_to)
-            setRate(parseFloat(taxToEdit.rate) * 100)
-        }
-    }, [])
 
     return (
         <Modal
@@ -35,13 +26,14 @@ const AddNewTaxForm = (props) => {
                 </ModalHeader>
                 <ModalBody style={{padding: 20}}>
                     <Formik
-                        initialValues={{
-                            name: taxToEdit && isEdit ? taxToEdit.name : '',
-                            rate: isEdit ? rate : 0,
+                        initialValues={taxToEdit && isEdit ? {...taxToEdit} : {
+                            name:'',
+                            rate: 0,
                             search: '',
                             select_all: false,
                             applicable_items: [],
-                            applied_to: appliedTo
+                            applied_to: ''
+
                         }}
                         onSubmit={(values, actions) => {
                             setTimeout(() => {
@@ -49,6 +41,7 @@ const AddNewTaxForm = (props) => {
                                 console.log(JSON.stringify(values, null, 2));
                                 isEdit ? onEditTax(values, taxIndex) : onAddNewTax(values)
                                 actions.setSubmitting(false);
+                                handleOnClose()
                             }, 1000);
                         }}>
 
