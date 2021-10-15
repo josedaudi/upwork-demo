@@ -61,7 +61,7 @@ const AddNewTaxForm = (props) => {
                                     <Col lg={4}>
                                         <input
                                             type="number"
-                                            onChange={(e) => props.setFieldValue('rate', e.target.value / 100)}
+                                            onChange={props.handleChange}
                                             onBlur={props.handleBlur}
                                             value={props.values.rate}
                                             placeholder={'Rate'}
