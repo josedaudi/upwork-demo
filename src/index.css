@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.form-tax{
+  padding: 2rem !important;
+}
+.modal-header button {
+  border: none !important;
+  background-color: #ffffff !important;
+}
+
+.modal-header button span {
+  font-size: 30px !important;
+}
+
+.form-tax input[type=text], input[type=number]{
+  width: 100% !important;
+  height: 40px;
+  border: 1px solid #bdbdbd !important;
+  border-radius: 5px !important;
+  padding: 10px
+}
+
+.form-tax input[type=text]:focus{
+  border: 1px solid #333333 !important;
+}
+
+.selection-option label{
+  padding: 5px;
+}
+
+.input-icons i {
+  position: absolute;
+  color: #bdbdbd !important;
+}
+
+.input-icons input[type='text']{
+  width: 40% !important;
+  margin-bottom: 10px;
+}
+
+.icon {
+  padding: 12px;
+  min-width: 40px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px 30px !important;
+}
+
+.round {
+  position: relative;
+}
+
+.round span{
+  margin-left: 15px;
+}
+
+.round label {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 15px;
+  left: 9px;
+  margin-left: 10px;
+  position: absolute;
+  top: 3px !important;
+  width: 15px;
+}
+
+.round label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 4px;
+  left: 3px;
+  opacity: 0;
+  position: absolute;
+  top: 4px;
+  transform: rotate(-45deg);
+  width: 8px;
+}
+
+.round input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.round input[type="checkbox"]:checked + label {
+  background-color: #F16D36 !important;
+  border-color: #F16D36 !important;
+}
+
+.round input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
